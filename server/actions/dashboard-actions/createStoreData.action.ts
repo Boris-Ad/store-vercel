@@ -22,7 +22,7 @@ export const createStoreDataAction = async (_prevState: unknown, formData: FormD
   const { name, logo, banner } = validatedFields.data;
 
   const blobLogo = await put(crypto.randomUUID() + logo.name, logo, { access: 'public' });
-  const blobBanner = await put(crypto.randomUUID() + banner.name, logo, { access: 'public' });
+  const blobBanner = await put(crypto.randomUUID() + banner.name, banner, { access: 'public' });
 
   await prisma.store.create({ data: { name, logo: blobLogo.url, banner: blobBanner.url } });
 
