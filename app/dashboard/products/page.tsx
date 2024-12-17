@@ -1,7 +1,11 @@
-const ProductsPage = () => {
-    return (
-        <div>ProductsPage</div>
-    )
-}
+import { PageTitle } from '../_components/PageTitle';
 
-export default ProductsPage
+const ProductsPage = async () => {
+  return (
+    <>
+      <PageTitle>Продукты</PageTitle>
+    </>
+  );
+};
+
+export default ProductsPage;

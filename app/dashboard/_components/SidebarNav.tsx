@@ -3,21 +3,15 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { sidebarNavLinks } from '@/data/dashboard';
 
 export const SidebarNav = () => {
   const pathname = usePathname();
 
-  const pages = [
-    { href: '/dashboard', title: 'Главная' },
-    { href: '/dashboard/settings', title: 'Настройка' },
-    { href: '/dashboard/products', title: 'Продукты' },
-    { href: '/dashboard/orders', title: 'Заказы' },
-  ];
-
   return (
-    <nav className="p-6">
+    <nav className="p-2 flex-1">
       <ul className="text-lg text-slate-300">
-        {pages.map(page => (
+        {sidebarNavLinks.map(page => (
           <li key={page.title}>
             <Link
               href={page.href}

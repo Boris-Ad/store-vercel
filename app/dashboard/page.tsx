@@ -1,7 +1,11 @@
-const DashboardPage = () => {
-    return (
-        <div>DashboardPage</div>
-    )
-}
+import { PageTitle } from './_components/PageTitle';
 
-export default DashboardPage
+const DashboardPage = async () => {
+  return (
+    <>
+      <PageTitle>Главная</PageTitle>
+    </>
+  );
+};
+
+export default DashboardPage;
