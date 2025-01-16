@@ -26,3 +26,13 @@ export const updateStoreDataSchema = createStoreDataSchema.extend({
   logo: imageSchema.optional(),
   banner: imageSchema.optional(),
 });
+
+export const createCategorySchema = z.object({
+  name: z.string().min(1, { message: 'Обязательно для заполнения!' }).max(20, { message: 'Не больше 20 символов!' }),
+  image: imageSchema.refine(file => file.size > 0, 'Обязательный параметр!'),
+});
+
+export const updateCategorySchema = z.object({
+  name: z.string().min(1, { message: 'Обязательно для заполнения!' }).max(20, { message: 'Не больше 20 символов!' }),
+  image: imageSchema.optional(),
+});

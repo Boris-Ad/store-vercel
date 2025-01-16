@@ -4,13 +4,13 @@ import React, { useActionState } from 'react';
 import { motion, useCycle } from 'motion/react';
 import Image from 'next/image';
 import { Store } from '@prisma/client';
-import { updateStoreDataAction } from '@/server/actions/dashboard-actions/updateStoreData.action';
+
 import { Button } from '@/components/ui/button';
 import { AnimatePresence } from 'framer-motion';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { CgSpinner } from 'react-icons/cg';
-
+import { updateStoreDataAction } from '@/server/actions/dashboard-actions/store.actions';
 
 export const SidebarShopInfo = ({ store }: { store: Store | null }) => {
   const [position, togglePosition] = useCycle<'close' | 'open'>('close', 'open');
@@ -35,11 +35,11 @@ export const SidebarShopInfo = ({ store }: { store: Store | null }) => {
         </div>
         <div>
           <p>Логотип</p>
-          {store ? <Image src={store.logo}  alt="Logo" width={60} height={60} className='w-[60px] h-auto aspect-square' /> : 'Not found'}
+          {store ? <Image src={store.logoUrl} alt="Logo" width={60} height={60} className="w-[60px] h-auto aspect-square" /> : 'Not found'}
         </div>
         <div className="space-y-2">
           <p>Баннер</p>
-          {store ? <Image src={store.banner} alt="Logo" width={226} height={240} className="max-w-[226px] h-auto aspect-video" /> : 'Not found'}
+          {store ? <Image src={store.bannerUrl} alt="Logo" width={226} height={240} className="max-w-[226px] h-auto aspect-video" /> : 'Not found'}
         </div>
 
         <Button onClick={() => togglePosition()} variant="outline" className="text-black">
@@ -59,8 +59,7 @@ export const SidebarShopInfo = ({ store }: { store: Store | null }) => {
               <div>
                 <Label htmlFor="name">Название</Label>
                 <Input type="text" id="name" name="name" max={60} required defaultValue={store?.name} className="border-slate-600" />
-                {state?.name && <p className='text-destructive text-sm'>{state.name}</p>}
-                
+                {state?.name && <p className="text-destructive text-sm">{state.name}</p>}
               </div>
               <div>
                 <Label htmlFor="logo">Логотип</Label>

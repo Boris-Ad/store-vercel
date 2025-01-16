@@ -1,5 +1,5 @@
 import prisma from '@/server/prisma';
 
 export const getCategories = async () => {
-  return await prisma.category.findMany();
+  return await prisma.category.findMany({orderBy:{createdAt:'asc'}});
 };
